@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img.desaturate {
+            filter: grayscale(100%);
+            -webkit-filter: grayscale(100%);
+            -moz-filter: grayscale(100%);
+        {#            -ms-filter: grayscale(100%);#} -o-filter: grayscale(100%);
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>{{ name }}</li>
+    <li>{{ age }}</li>
+    <li>{{ sex.time }}</li>
+    <li>{{ sex.date }}</li>
+    <li>{{ year }}</li>
+    {% for key,value in sedx.items %}
+        <li>{{ key }} :{{ value }}</li>
+    {% empty %}
+        <p>Sorry,It's empty!</p>
+    {% endfor %}
+    <tr>
+        <td class="{% cycle 'row1' 'row2' %}">...</td>
+        {#        <td class="{{ rowcolors }}">...</td>#}
+    </tr>
+    {#    <tr>#}
+    {#        <td class="{% cycle rowcolors %}">...</td>#}
+    {#        <td class="{{ rowcolors }}">...</td>#}
+    {#    </tr>#}
+    <br>
+    {#    {% filter force_escape|lower %}#}
+    {#        This text will be HTML-escaped, and will appear in all lowercase.#}
+    {#    {% endfilter %}#}
+    {% firstof var01 var02 "<strong>fallback value</strong>" %}
+    <br>
+    {#    {% autoescape on %}#}
+    {#        {% firstof var01 var02 "<img src='http://img.juimg.com/tuku/yulantu/120926/219049-12092612022378.jpg' alt=''>" %}#}
+    {#    {% endautoescape %}#}
+    {% autoescape on %}
+        <p id="dd">{{ im }}</p>
+    {% endautoescape %}
+    {{ im|safe }}
+    <button id="kk">Click</button>
+    <div>{% include '404.html' with name="dongkang" %}</div>
+    It is {% now 'Y-m-d h:i' %}
+    <br>
+    It is the {% now "jS \o\f F" %}
+
+</ul>
+
+{% regroup cities by country as country_list %}
+
+{#<ul>#}
+{#    {% for country, local_cities in country_list %}#}
+{#        <li>{{ country }}#}
+{#            <ul>#}
+{#                {% for city in local_cities %}#}
+{#                    <li>{{ city.name }}: {{ city.population }}</li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </li>#}
+{#    {% endfor %}#}
+{#</ul>#}
+
+{#<table>#}
+{#    {% for o in cities %}#}
+{#        {% for ds in cities %}#}
+{#            <tr class="{% cycle 'row1' 'row2' %}">#}
+{#                <td>sss</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        {% resetcycle %}#}
+{#    {% endfor %}#}
+{#</table>#}
+{{ value|addslashes }}
+<br>
+{{ value|capfirst }}
+<div>
+    "{{ value1|center:"150" }}"
+</div>
+<p>{{ cutValue| cut:'a' }}</p>
+<p>{{ ss| default:'This is default value' }}</p>
+<ul>
+    {% for vc in dict_list|dictsortreversed:'age' %}
+        <li>{{ vc.name }}:{{ vc.age }}</li>
+    {% endfor %}
+</ul>
+{#<p>{{ 21|divisibleby:'3' }}</p>#}
+{#<p>{{ None|default_if_none:"nothing" }}</p>#}
+{#<p>{{ 12345688|filesizeformat }}</p>#}
+{#<p>{{ 124.2324|floatformat:6 }}</p>#}
+{#<p>{{ 12345689|get_digit:'10' }}</p>#}
+{#<p>{{ list_join|join:"//" }}</p>#}
+{#<p>{{ 'ASFQEWRGGGY'|lower }}</p>#}
+{#<p>{{ 'asfqewtggy'|upper }}</p>#}
+{#<p>{{ list_join|random }}</p>#}
+{% autoescape on %}
+    <p>{{ im }}</p>
+{% endautoescape %}
+<span>{{ list_join|slice:'1:' }}</span>
+<p>{{ value|title }}</p>
+<p>{{ value|truncatewords:'2' }}</p>
+<ul>
+    {{ under_l|unordered_list }}
+</ul>
+<ul>
+    {{ list_join|unordered_list }}
+</ul>
+<p>{{ 'this'|wordcount }}</p>
+{% load humanize %}
+<p>{{ 1500|intcomma }}</p>
+</body>
+<script>
+    var s = document.getElementById('dd').innerText;
+    var sx = document.getElementById('wx').innerText;
+    var sd = document.getElementById('kk').onclick = function () {
+        alert(s);
+        alert(sx);
+    };
+</script>
+</html>
