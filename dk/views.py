@@ -28,6 +28,7 @@ def pr(request, year=None):
     print(list(kkk)[0][1])
     print("Changed")
     print("Changed twice")
+    print('This is Dong')
     # for k in list(kkk):
     #     print(k)
     con = {
