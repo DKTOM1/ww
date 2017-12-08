@@ -26,6 +26,7 @@ def pr(request, year=None):
     kkk = dd.values_list('id', 'first_name')
     print(list(kkk))
     print(list(kkk)[0][1])
+    print("Changed")
     # for k in list(kkk):
     #     print(k)
     con = {
