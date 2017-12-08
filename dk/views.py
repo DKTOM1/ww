@@ -13,6 +13,7 @@ def pr(request, year=None):
     print(request)
     dd = models.Person.objects.all()
     print(list(dd.values()))
+    print('')
     # models.Person.objects.create(first_name='pi', last_name='wenwen')
     # 上面代码不写默认的id时，必须书写键值对
     # kk = dd.get(id=1)
