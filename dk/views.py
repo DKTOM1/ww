@@ -13,7 +13,6 @@ def pr(request, year=None):
     print(request)
     dd = models.Person.objects.all()
     print(list(dd.values()))
-    print('cvbjj')
     # models.Person.objects.create(first_name='pi', last_name='wenwen')
     # 上面代码不写默认的id时，必须书写键值对
     # kk = dd.get(id=1)
@@ -27,9 +26,6 @@ def pr(request, year=None):
     kkk = dd.values_list('id', 'first_name')
     print(list(kkk))
     print(list(kkk)[0][1])
-    print("Changed")
-    print("Changed twice")
-    print('This is Dong')
     # for k in list(kkk):
     #     print(k)
     con = {
