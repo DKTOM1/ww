@@ -1,12 +1,14 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 
 # Create your views here.
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, HttpResponseNotFound
 from .ser.req import dely
 from django.template.response import TemplateResponse
-from django.shortcuts import loader
+from django.shortcuts import loader, render
 from dk import models
 import json
+from django.urls import reverse
+import datetime
 
 
 def pr(request, year=None):
@@ -56,11 +58,13 @@ def pr(request, year=None):
         'list_join': ['a', 'b', 'c'],
         'under_l': ['States', ['Kansas', ['Lawrence', 'Topeka'], 'Illinois']],
         'year': year,
+        'year_list': [2012, 2013, 2014, 2015],
     }
     # con = dely(year)
     # return render(request, 'bm.html', context=con, status=200)
     # return TemplateResponse(request, 'bm.html', context=con, status=200)
     # t = loader.render_to_string('bm.html', con, request)
+    print(datetime.datetime.now())
     return HttpResponse(loader.render_to_string('bm.html', context=con))
     # return HttpResponse(t)
 
@@ -73,7 +77,13 @@ def pp(request):
 
 
 def dd(request, username=None):
-    return HttpResponse(username)
+    # return HttpResponse(username)
+    return HttpResponseNotFound('<h1 style= "font-family:华文彩云;">' + username + ' not found</h1>')
 
 
+def pt(request):
+    return HttpResponse("This is 2015")
 
+
+def page_not_found(request):
+    return render(request, '404.html')

@@ -20,6 +20,7 @@ class Album(models.Model):
     release_date = models.CharField(max_length=100)
     num_stars = models.CharField(max_length=100)
 
+
 # class Topping(models.Model):
 #     T_id = models.CharField(primary_key=True, max_length=50)
 #     T_name = models.CharField(max_length=50)
@@ -75,3 +76,11 @@ class Album(models.Model):
 #
 #     def __str__(self):  # __unicode__ on Python 2
 #         return "%s the waiter at %s" % (self.name, self.restaurant)
+class derson(models.Model):
+    SHIRT_SIZES = (
+        ('S', 'Small'),
+        ('M', 'Medium'),
+        ('L', 'Large'),
+    )
+    name = models.CharField(max_length=60)
+    shirt_size = models.CharField(max_length=1, choices=SHIRT_SIZES)

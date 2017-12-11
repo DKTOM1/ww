@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from dk import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ww/', include('dk.urls')),
     path('', include('dk.urls')),
+    # path('cc/', include('dk.urls')),
     path('<username>/kk/', include('dk.urls')),
 ]
+
+handler = 'views.page_not_found'
