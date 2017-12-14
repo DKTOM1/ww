@@ -21,15 +21,17 @@ class Album(models.Model):
     num_stars = models.CharField(max_length=100)
 
 
-# class Topping(models.Model):
-#     T_id = models.CharField(primary_key=True, max_length=50)
-#     T_name = models.CharField(max_length=50)
-#
-#
-# class Pizza(models.Model):
-#     P_id = models.CharField(primary_key=True, max_length=50)
-#     P_name = models.CharField(max_length=50)
-#     toppings = models.ManyToManyField(Topping)
+class Topping(models.Model):
+    T_id = models.CharField(primary_key=True, max_length=50)
+    T_name = models.CharField(max_length=50)
+
+
+class Pizza(models.Model):
+    P_id = models.CharField(primary_key=True, max_length=50)
+    P_name = models.CharField(max_length=50)
+    toppings = models.ManyToManyField(Topping)
+
+
 #
 #
 # class MusicPerson(models.Model):
@@ -84,3 +86,24 @@ class derson(models.Model):
     )
     name = models.CharField(max_length=60)
     shirt_size = models.CharField(max_length=1, choices=SHIRT_SIZES)
+
+
+class Publication(models.Model):
+    title = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ('title',)
+
+
+class Article(models.Model):
+    headline = models.CharField(max_length=100)
+    publications = models.ManyToManyField(Publication)
+
+    def __str__(self):
+        return self.headline
+
+    class Meta:
+        ordering = ('headline',)

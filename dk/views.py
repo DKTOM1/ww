@@ -65,6 +65,7 @@ def pr(request, year=None):
     # return TemplateResponse(request, 'bm.html', context=con, status=200)
     # t = loader.render_to_string('bm.html', con, request)
     print(datetime.datetime.now())
+    print(list(models.Person.objects.values_list('first_name')))
     return HttpResponse(loader.render_to_string('bm.html', context=con))
     # return HttpResponse(t)
 
